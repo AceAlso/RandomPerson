@@ -25,11 +25,10 @@ def Its_Random_I_Swear():
             Parents.remove(z)
 
     Relation = dict(zip(Santas, GoodKidsR))
-    print()
     for mikus in Relation:
         OTPT = OTPT + '\n' + str(mikus) + ' kupuje prezent ' + str(Relation[mikus])
     OTPT = OTPT + '\n' + (27*'*')
-    print(OTPT)
+    print('\n' + OTPT)
     clip.copy(OTPT)
     time.sleep(30)
 Its_Random_I_Swear()
