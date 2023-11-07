@@ -1,34 +1,37 @@
-#Randomizer biorący Imię i losujący mu osobę do kupienia prezentu na mikołajki
-import random, time, pyperclip as clip
+# Randomizer biorący Imię i losujący mu osobę do kupienia prezentu na mikołajki
+import random
+import time
+import pyperclip as clip
 
-def Its_Random_I_Swear():
-    OTPT = (10 * '*') + '|LISTA|' + (10 * '*')
-    Santas = []
-    Parents = []
-    Elves = int(input('Ile osób bierze udział?:'))
-    for x in range(Elves):
-        Santas.append(input('Dodaj Mikołaja #' + str(len(Santas)+1) +':'))
-    Parents = Santas.copy()
-    GoodKidsR = []
-    z = None
-    while Parents != []:
-        z = random.choice(Parents)
-        GoodKidsR.append(z)
-        if GoodKidsR[len(GoodKidsR)-1] == Santas[len(GoodKidsR)-1]:
-            GoodKidsR.remove(z)
-        elif GoodKidsR[len(GoodKidsR)-1] == 'Dorota' or GoodKidsR[len(GoodKidsR)-1] == 'Gadom':
-            if Santas[len(GoodKidsR)-1] == 'Dorota' or Santas[len(GoodKidsR)-1] == 'Gadom':
-                GoodKidsR.remove(z)
+
+def its_random_i_swear():
+    otpt = (10 * '*') + '|LISTA|' + (10 * '*')
+    santas = []
+    elves = int(input('Ile osób bierze udział?:'))
+    for x in range(elves):
+        santas.append(input('Dodaj Mikołaja #' + str(len(santas)+1) + ':'))
+    parents = santas.copy()
+    good_kids_r = []
+    while parents:
+        z = random.choice(parents)
+        good_kids_r.append(z)
+        if good_kids_r[len(good_kids_r)-1] == santas[len(good_kids_r)-1]:
+            good_kids_r.remove(z)
+        elif good_kids_r[len(good_kids_r)-1] == 'Dorota' or good_kids_r[len(good_kids_r)-1] == 'Gadom':
+            if santas[len(good_kids_r)-1] == 'Dorota' or santas[len(good_kids_r)-1] == 'Gadom':
+                good_kids_r.remove(z)
             else:
-                Parents.remove(z)
+                parents.remove(z)
         else:
-            Parents.remove(z)
+            parents.remove(z)
 
-    Relation = dict(zip(Santas, GoodKidsR))
-    for mikus in Relation:
-        OTPT = OTPT + '\n' + str(mikus) + ' kupuje prezent ' + str(Relation[mikus])
-    OTPT = OTPT + '\n' + (27*'*')
-    print('\n' + OTPT)
-    clip.copy(OTPT)
+    relation = dict(zip(santas, good_kids_r))
+    for mikus in relation:
+        otpt = otpt + '\n' + str(mikus) + ' kupuje prezent ' + str(relation[mikus])
+    otpt = otpt + '\n' + (27*'*')
+    print('\n' + otpt)
+    clip.copy(otpt)
     time.sleep(30)
-Its_Random_I_Swear()
+
+
+its_random_i_swear()
