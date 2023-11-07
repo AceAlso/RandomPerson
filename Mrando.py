@@ -2,17 +2,14 @@
 import random, time, pyperclip as clip
 
 def Its_Random_I_Swear():
-    OTPT = ''
+    OTPT = (10 * '*') + '|LISTA|' + (10 * '*')
     Santas = []
     Parents = []
     Elves = int(input('Ile osób bierze udział?:'))
-    if len(Santas) < Elves:
-        for x in range(Elves):
-            Santas.append(input('Dodaj Mikołaja #' + str(len(Santas)+1) +':'))
-        else:
-            Parents = Santas.copy()
+    for x in range(Elves):
+        Santas.append(input('Dodaj Mikołaja #' + str(len(Santas)+1) +':'))
+    Parents = Santas.copy()
     GoodKidsR = []
-    Relation = {}
     z = None
     while Parents != []:
         z = random.choice(Parents)
@@ -26,11 +23,13 @@ def Its_Random_I_Swear():
                 Parents.remove(z)
         else:
             Parents.remove(z)
-    else:
-        Relation = dict(zip(Santas, GoodKidsR))
-        for mikus in Relation:
-            OTPT = OTPT + '\n' + str(mikus) + ' kupuje prezent ' + str(Relation[mikus])
-            print(str(mikus) + ' kupuje prezent ' + str(Relation[mikus]))
+
+    Relation = dict(zip(Santas, GoodKidsR))
+    print()
+    for mikus in Relation:
+        OTPT = OTPT + '\n' + str(mikus) + ' kupuje prezent ' + str(Relation[mikus])
+    OTPT = OTPT + '\n' + (27*'*')
+    print(OTPT)
     clip.copy(OTPT)
     time.sleep(30)
 Its_Random_I_Swear()
